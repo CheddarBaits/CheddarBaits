@@ -29,7 +29,8 @@ a { color: inherit; text-decoration: none; }
   max-width: var(--max); margin: auto; min-height: 76px;
   display: flex; align-items: center; justify-content: space-between; padding: 8px 24px;
 }
-.brand img { height: 58px; width: auto; display: block; }
+.brand { width: 62px; height: 62px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 50%; }
+.brand img { width: 76px; height: 76px; object-fit: cover; border-radius: 50%; display: block; }
 nav { display: flex; gap: 28px; align-items: center; }
 nav a {
   color: white; font-size: .85rem; font-weight: 800;
@@ -38,19 +39,12 @@ nav a {
 nav a:hover { color: var(--gold); }
 .menu-toggle { display: none; background: none; border: 0; color: white; font-size: 2rem; }
 
-.hero {
-  min-height: 650px; position: relative; overflow: hidden;
-  display: flex; align-items: center; justify-content: center; text-align: center;
-  background: var(--black);
-}
-.hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .65; }
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.8), rgba(0,0,0,.25), rgba(0,0,0,.75)); }
-.hero-content { position: relative; z-index: 2; color: white; max-width: 850px; padding: 50px 24px; }
+.hero { width: 100%; background: var(--black); display: flex; justify-content: center; overflow: hidden; }
+.hero-image { width: 100%; height: auto; max-height: 720px; display: block; object-fit: contain; }
 .eyebrow {
   font-size: .78rem; font-weight: 800; letter-spacing: .18em;
   color: var(--orange); margin-bottom: 12px;
 }
-.hero .eyebrow { color: var(--gold); }
 h1, h2 { font-family: 'Anton', Impact, sans-serif; text-transform: uppercase; line-height: .95; letter-spacing: .02em; }
 h1 { font-size: clamp(4rem, 10vw, 8.5rem); }
 h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
@@ -58,7 +52,6 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
   font-size: clamp(1.5rem, 4vw, 2.6rem); font-weight: 800;
   color: var(--gold); text-transform: uppercase; margin-top: 14px;
 }
-.hero-copy { max-width: 600px; margin: 22px auto 30px; font-size: 1.05rem; }
 .button {
   display: inline-block; background: var(--gold); color: var(--black);
   padding: 15px 24px; border: 3px solid var(--black);
@@ -67,7 +60,7 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
 }
 .button:hover { transform: translateY(-3px); background: var(--orange); }
 .section { max-width: var(--max); margin: auto; padding: 90px 24px; }
-.intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+.intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .intro > p { font-size: 1.15rem; font-weight: 600; }
 .dark-section { max-width: none; background: var(--black); color: white; padding-left: max(24px, calc((100% - var(--max))/2)); padding-right: max(24px, calc((100% - var(--max))/2)); }
 .section-heading { margin-bottom: 45px; }
@@ -118,7 +111,11 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
 .order-steps p { color: #aaa; font-size: .9rem; }
 .small-note { margin-top: 14px; color: #777; font-size: .75rem; }
 footer { background: #070707; color: #888; text-align: center; padding: 35px 24px; font-size: .8rem; }
-footer img { width: 130px; max-height: 55px; object-fit: contain; margin-bottom: 12px; }
+footer img { width: 95px; height: 95px; object-fit: cover; border-radius: 50%; margin-bottom: 12px; }
+
+.contact-section { background: var(--cream); text-align: center; }
+.contact-section .section { padding-top: 65px; padding-bottom: 65px; }
+.contact-section p:last-child { margin-top: 18px; font-weight: 600; }
 
 @media (max-width: 800px) {
   .menu-toggle { display: block; }
@@ -128,10 +125,10 @@ footer img { width: 130px; max-height: 55px; object-fit: contain; margin-bottom:
   .product-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .order-steps { grid-template-columns: 1fr; }
-  .hero { min-height: 580px; }
 }
 @media (max-width: 480px) {
-  .brand img { height: 48px; }
+  .brand { width: 54px; height: 54px; }
+  .brand img { width: 70px; height: 70px; }
   .nav-wrap { padding: 8px 16px; }
   .section { padding: 65px 18px; }
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
