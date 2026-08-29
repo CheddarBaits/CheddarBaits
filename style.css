@@ -135,3 +135,17 @@ footer img { width: 95px; height: 95px; object-fit: cover; border-radius: 50%; m
   .color-showcase { min-height: 300px; }
   .color-dot { width: 105px; height: 105px; }
 }
+.product-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  aspect-ratio: 1 / 1;
+  background: #111;
+  overflow: hidden;
+}
+
+.product-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
