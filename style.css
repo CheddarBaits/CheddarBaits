@@ -20,6 +20,8 @@ body {
   line-height: 1.6;
 }
 a { color: inherit; text-decoration: none; }
+
+/* ---------- header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 20;
   background: rgba(16,16,16,.96);
@@ -39,6 +41,7 @@ nav a {
 nav a:hover { color: var(--gold); }
 .menu-toggle { display: none; background: none; border: 0; color: white; font-size: 2rem; }
 
+/* ---------- hero + type ---------- */
 .hero { width: 100%; background: var(--black); display: flex; justify-content: center; overflow: hidden; }
 .hero-image { width: 100%; height: auto; max-height: 720px; display: block; object-fit: contain; }
 .eyebrow {
@@ -59,27 +62,52 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
   transition: transform .15s, background .15s;
 }
 .button:hover { transform: translateY(-3px); background: var(--orange); }
+
+/* ---------- layout ---------- */
 .section { max-width: var(--max); margin: auto; padding: 90px 24px; }
 .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .intro > p { font-size: 1.15rem; font-weight: 600; }
 .dark-section { max-width: none; background: var(--black); color: white; padding-left: max(24px, calc((100% - var(--max))/2)); padding-right: max(24px, calc((100% - var(--max))/2)); }
 .section-heading { margin-bottom: 45px; }
 .section-heading p:last-child { margin-top: 15px; color: var(--gray); max-width: 650px; }
+
+/* ---------- product cards ---------- */
 .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.product-card { background: #1c1c1c; border: 1px solid #383838; }
+.product-card { background: #1c1c1c; border: 1px solid #383838; display: flex; flex-direction: column; }
+
 .product-placeholder {
-  min-height: 290px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  aspect-ratio: 1 / 1;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
   background: radial-gradient(circle at center, #363636, #171717); color: #aaa; gap: 6px;
 }
 .product-placeholder span { font-size: 3rem; }
 .product-placeholder strong { color: white; text-transform: uppercase; }
 .product-placeholder small { color: #888; }
-.product-info { padding: 22px; }
+
+/* two photos stacked one above the other, same square footprint as a placeholder */
+.product-images {
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  background: #111;
+  overflow: hidden;
+}
+.product-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info { padding: 22px; display: flex; flex-direction: column; flex: 1; }
 .product-info h3 { font-size: 1.35rem; text-transform: uppercase; }
 .product-info p { color: #bbb; margin: 8px 0 18px; }
-.product-bottom { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.product-bottom { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: auto; }
 .product-bottom span { color: var(--gold); font-weight: 800; font-size: .8rem; }
 .product-bottom a { color: white; font-weight: 800; text-transform: uppercase; font-size: .8rem; }
+
+/* ---------- custom colors ---------- */
 .custom-section { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: center; }
 .custom-copy p:not(.eyebrow) { max-width: 600px; margin: 24px 0 30px; font-size: 1.1rem; font-weight: 600; }
 .accent-text { color: var(--red); }
@@ -95,12 +123,16 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
 .dot-three { background: #20a35a; top: 40px; right: 25px; }
 .dot-four { background: #d92922; bottom: 30px; right: 70px; }
 .dot-five { background: #6e35a5; top: 110px; left: 45%; }
+
+/* ---------- gallery ---------- */
 .gallery-section { background: var(--cream); }
 .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .gallery-placeholder {
   aspect-ratio: 1; display: grid; place-items: center; border: 3px dashed #aaa;
   color: #888; font-weight: 800; background: #eee8d9;
 }
+
+/* ---------- order ---------- */
 .order-section { background: var(--black); color: white; max-width: none; text-align: center; padding-left: max(24px, calc((100% - var(--max))/2)); padding-right: max(24px, calc((100% - var(--max))/2)); }
 .order-section > div:first-child { max-width: 700px; margin: auto; }
 .order-section > div:first-child p:last-child { color: #bbb; margin: 18px auto 35px; }
@@ -110,13 +142,15 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
 .order-steps h3 { text-transform: uppercase; margin: 5px 0; }
 .order-steps p { color: #aaa; font-size: .9rem; }
 .small-note { margin-top: 14px; color: #777; font-size: .75rem; }
-footer { background: #070707; color: #888; text-align: center; padding: 35px 24px; font-size: .8rem; }
-footer img { width: 95px; height: 95px; object-fit: cover; border-radius: 50%; margin-bottom: 12px; }
 
+/* ---------- contact + footer ---------- */
 .contact-section { background: var(--cream); text-align: center; }
 .contact-section .section { padding-top: 65px; padding-bottom: 65px; }
 .contact-section p:last-child { margin-top: 18px; font-weight: 600; }
+footer { background: #070707; color: #888; text-align: center; padding: 35px 24px; font-size: .8rem; }
+footer img { width: 95px; height: 95px; object-fit: cover; border-radius: 50%; margin-bottom: 12px; }
 
+/* ---------- responsive (keep these last) ---------- */
 @media (max-width: 800px) {
   .menu-toggle { display: block; }
   nav { display: none; position: absolute; top: 76px; left: 0; right: 0; background: var(--black); padding: 20px 24px; flex-direction: column; align-items: stretch; gap: 18px; }
@@ -134,18 +168,4 @@ footer img { width: 95px; height: 95px; object-fit: cover; border-radius: 50%; m
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .color-showcase { min-height: 300px; }
   .color-dot { width: 105px; height: 105px; }
-}
-.product-images {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  aspect-ratio: 1 / 1;
-  background: #111;
-  overflow: hidden;
-}
-
-.product-images img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
 }
