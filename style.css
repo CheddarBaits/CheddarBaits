@@ -187,3 +187,4 @@ footer img { width: 95px; height: 95px; object-fit: cover; border-radius: 50%; m
   .color-showcase { min-height: 300px; }
   .color-dot { width: 105px; height: 105px; }
 }
+body { background: hotpink; }
