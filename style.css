@@ -140,29 +140,32 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
 .dot-five { background: #6e35a5; top: 110px; left: 45%; }
 
 /* ---------- gallery ---------- */
-/* slightly deeper cream so it reads as its own band */
 .gallery-section {
-  background: #f5ecd6;
+  background: var(--black);
+  color: white;
   max-width: none;
   padding-left: max(24px, calc((100% - var(--max))/2));
   padding-right: max(24px, calc((100% - var(--max))/2));
 }
 .gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .gallery-placeholder {
-  aspect-ratio: 1; display: grid; place-items: center; border: 3px dashed #aaa;
-  color: #888; font-weight: 800; background: #eee8d9;
+  aspect-ratio: 1; display: grid; place-items: center; border: 3px dashed #4a4a4a;
+  color: #7a7a7a; font-weight: 800; background: #1a1a1a;
 }
 
 /* ---------- order ---------- */
-.order-section { background: var(--black); color: white; max-width: none; text-align: center; padding-left: max(24px, calc((100% - var(--max))/2)); padding-right: max(24px, calc((100% - var(--max))/2)); }
+.order-section { background: var(--gold); color: var(--black); max-width: none; text-align: center; padding-left: max(24px, calc((100% - var(--max))/2)); padding-right: max(24px, calc((100% - var(--max))/2)); }
 .order-section > div:first-child { max-width: 700px; margin: auto; }
-.order-section > div:first-child p:last-child { color: #bbb; margin: 18px auto 35px; }
+.order-section > div:first-child p:last-child { color: #4a3d00; margin: 18px auto 35px; }
 .order-steps { max-width: 950px; margin: 0 auto 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.order-steps div { border-top: 3px solid var(--gold); padding: 22px; }
-.order-steps span { color: var(--gold); font-family: 'Anton'; font-size: 2rem; }
+.order-steps div { border-top: 3px solid var(--black); padding: 22px; }
+.order-steps span { color: var(--black); font-family: 'Anton'; font-size: 2rem; }
 .order-steps h3 { text-transform: uppercase; margin: 5px 0; }
-.order-steps p { color: #aaa; font-size: .9rem; }
-.small-note { margin-top: 14px; color: #777; font-size: .75rem; }
+.order-steps p { color: #4a3d00; font-size: .9rem; }
+/* gold-on-gold would be invisible, so this button flips to black */
+.order-section .button { background: var(--black); color: white; border-color: var(--black); }
+.order-section .button:hover { background: var(--red); color: white; }
+.small-note { margin-top: 14px; color: #6b5900; font-size: .75rem; }
 
 /* ---------- footer ---------- */
 footer { background: #070707; color: #888; text-align: center; padding: 35px 24px; font-size: .8rem; }
