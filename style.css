@@ -64,7 +64,7 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
 .button:hover { transform: translateY(-3px); background: var(--orange); }
 
 /* ---------- full-width section dividers ---------- */
-.divider { width: 100%; height: 4px; border: 0; margin: 0; display: block; }
+.divider { width: 100%; height: 6px; border: 0; margin: 0; display: block; }
 .divider-gold { background: var(--gold); }
 .divider-black { background: var(--black); }
 
