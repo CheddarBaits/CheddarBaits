@@ -73,8 +73,14 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
 
 /* ---------- product cards ---------- */
 /* minmax(0, 1fr) lets a column shrink below the natural width of a large image.
-   Plain 1fr does not, which is what was blowing out the third column. */
-.product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+   Plain 1fr does not, which is what was blowing out the third column.
+   max-width shrinks the cards — raise or lower this one number to resize them. */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 680px;
+}
 .product-card { background: #1c1c1c; border: 1px solid #383838; display: flex; flex-direction: column; min-width: 0; }
 
 /* all three cards share the same 2:3 portrait top so the row lines up */
@@ -83,15 +89,15 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
   display: flex; flex-direction: column; justify-content: center; align-items: center;
   background: radial-gradient(circle at center, #363636, #171717); color: #aaa; gap: 6px;
 }
-.product-placeholder span { font-size: 3rem; }
-.product-placeholder strong { color: white; text-transform: uppercase; }
+.product-placeholder span { font-size: 2.2rem; }
+.product-placeholder strong { color: white; text-transform: uppercase; font-size: .8rem; }
 .product-placeholder small { color: #888; }
 
-/* two photos stacked one above the other in the same 2:3 footprint */
+/* grid-auto-rows means this works with one image OR two stacked — no CSS change needed */
 .product-images {
   aspect-ratio: 2 / 3;
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-auto-rows: 1fr;
   gap: 2px;
   background: #111;
   overflow: hidden;
@@ -105,12 +111,12 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
   display: block;
 }
 
-.product-info { padding: 22px; display: flex; flex-direction: column; flex: 1; }
-.product-info h3 { font-size: 1.35rem; text-transform: uppercase; }
-.product-info p { color: #bbb; margin: 8px 0 18px; }
+.product-info { padding: 16px; display: flex; flex-direction: column; flex: 1; }
+.product-info h3 { font-size: 1.05rem; text-transform: uppercase; line-height: 1.2; }
+.product-info p { color: #bbb; margin: 8px 0 16px; font-size: .82rem; }
 .product-bottom { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: auto; }
-.product-bottom span { color: var(--gold); font-weight: 800; font-size: .8rem; }
-.product-bottom a { color: white; font-weight: 800; text-transform: uppercase; font-size: .8rem; }
+.product-bottom span { color: var(--gold); font-weight: 800; font-size: .7rem; }
+.product-bottom a { color: white; font-weight: 800; text-transform: uppercase; font-size: .7rem; }
 
 /* ---------- custom colors ---------- */
 .custom-section { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: center; }
@@ -161,7 +167,7 @@ footer img { width: 95px; height: 95px; object-fit: cover; border-radius: 50%; m
   nav { display: none; position: absolute; top: 76px; left: 0; right: 0; background: var(--black); padding: 20px 24px; flex-direction: column; align-items: stretch; gap: 18px; }
   nav.open { display: flex; }
   .intro, .custom-section { grid-template-columns: 1fr; gap: 30px; }
-  .product-grid { grid-template-columns: minmax(0, 1fr); max-width: 420px; margin: auto; }
+  .product-grid { grid-template-columns: minmax(0, 1fr); max-width: 320px; margin: auto; }
   .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .order-steps { grid-template-columns: minmax(0, 1fr); }
 }
