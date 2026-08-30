@@ -122,6 +122,22 @@ h2 { font-size: clamp(3rem, 7vw, 5.5rem); }
 .product-bottom span { color: var(--gold); font-weight: 800; font-size: .8rem; }
 .product-bottom a { color: white; font-weight: 800; text-transform: uppercase; font-size: .8rem; }
 
+/* ---------- colors page ---------- */
+.page-head { padding-bottom: 45px; }
+.page-head p:last-child { margin-top: 15px; color: #5a5a5a; max-width: 650px; }
+
+.color-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.color-card { background: #1c1c1c; border: 1px solid #383838; display: flex; flex-direction: column; min-width: 0; }
+.color-swatch { height: 220px; width: 100%; }
+.color-swatch-empty {
+  display: grid; place-items: center;
+  background: radial-gradient(circle at center, #363636, #171717);
+  color: #7a7a7a; font-weight: 800; font-size: .8rem; letter-spacing: .08em;
+}
+.color-card-info { padding: 20px; }
+.color-card-info h3 { font-size: 1.15rem; text-transform: uppercase; }
+.color-card-info p { color: #bbb; margin-top: 8px; font-size: .9rem; }
+
 /* ---------- custom colors ---------- */
 .custom-section { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: center; }
 .custom-copy p:not(.eyebrow) { max-width: 600px; margin: 24px 0 30px; font-size: 1.1rem; font-weight: 600; }
@@ -178,6 +194,7 @@ footer img { width: 95px; height: 95px; object-fit: cover; border-radius: 50%; m
   nav.open { display: flex; }
   .intro, .custom-section { grid-template-columns: 1fr; gap: 30px; }
   .product-grid { grid-template-columns: minmax(0, 1fr); max-width: 420px; margin: auto; }
+  .color-grid { grid-template-columns: minmax(0, 1fr); max-width: 420px; margin: auto; }
   .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .order-steps { grid-template-columns: minmax(0, 1fr); }
 }
