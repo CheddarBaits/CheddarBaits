@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The CheddarBaits 3.5&quot; ribbed paddletail swimbait, poured to order in any color in the lineup.">
+  <title>3.5" Paddletail Swimbait | CheddarBaits</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lure.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/cheddarbaits.jpg" alt="CheddarBaits logo">
+      </a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+      <nav id="site-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#lures">Lures</a>
+        <a href="colors.html">Colors</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#order">How to Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section page-head">
+      <p class="eyebrow">THE LINEUP</p>
+      <h2>3.5" Paddletail Swimbait</h2>
+      <p>Paddletails that are guaranteed to drive the bass nuts.</p>
+    </section>
+
+    <hr class="divider divider-gold">
+
+    <section class="section dark-section">
+      <div class="lure-detail">
+
+        <div class="lure-viewer" id="lure-viewer">
+          <!-- filled in by lure.js -->
+        </div>
+
+        <div class="lure-panel">
+
+          <p class="lure-price">5.99</p>
+
+          <p class="lure-copy">
+            A 3.5" ribbed paddletail that kicks hard at any speed. Ribbed body
+            holds scent and gives it a bit of extra thump on the retrieve. Rig it
+            on a jighead, a swimbait hook, or as a trailer. 
+            Every pack contains five 3.5" Cheddarbaits paddletails.
+          </p>
+
+          <div class="lure-picker">
+            <label for="color-select">Choose a color</label>
+            <select id="color-select"></select>
+          </div>
+
+          <div class="lure-color-info" aria-live="polite">
+            <h3 id="color-name"></h3>
+            <p id="color-blurb"></p>
+          </div>
+
+          <a class="button" href="mailto:cheddarbaits@gmail.com?subject=Paddletail%20order">Order this bait</a>
+
+          <p class="lure-note">
+            Want a color that isn't listed? <a href="colors.html">See the full lineup</a>
+            or ask for a custom pour.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider divider-gold">
+
+  </main>
+
+  <footer>
+    <img src="assets/cheddarbaits.jpg" alt="CheddarBaits">
+    <p>&copy; <span id="year"></span> CheddarBaits. Custom Colors. Anytime.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="colors.js"></script>
+  <script src="lure.js"></script>
+  <script>initLurePage("paddletail");</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The CheddarBaits 5&quot; Senko — a classic soft plastic stick bait, poured to order in any color in the lineup.">
+  <title>5" Senko | CheddarBaits</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lure.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/cheddarbaits.jpg" alt="CheddarBaits logo">
+      </a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+      <nav id="site-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#lures">Lures</a>
+        <a href="colors.html">Colors</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#order">How to Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section page-head">
+      <p class="eyebrow">THE LINEUP</p>
+      <h2>5" Senko</h2>
+      <p>The classic Senko everyone loves &mdash; poured to order in the color you pick.</p>
+    </section>
+
+    <hr class="divider divider-gold">
+
+    <section class="section dark-section">
+      <div class="lure-detail">
+
+        <div class="lure-viewer" id="lure-viewer">
+          <!-- filled in by lure.js -->
+        </div>
+
+        <div class="lure-panel">
+
+          <p class="lure-price">$5.99</p>
+
+          <p class="lure-copy">
+            A 5" soft plastic stick bait with a slow, shimmying fall that lets the lure do the talkin'. 
+            Fish it Texas rigged, or on a drop shop for when you need it deeper.
+            Poured in small batches, so every color in
+            the list is one we actually use.
+          </p>
+
+          <div class="lure-picker">
+            <label for="color-select">Choose a color</label>
+            <select id="color-select"></select>
+          </div>
+
+          <div class="lure-color-info" aria-live="polite">
+            <h3 id="color-name"></h3>
+            <p id="color-blurb"></p>
+          </div>
+
+          <a class="button" href="mailto:cheddarbaits@gmail.com?subject=Senko%20order">Order this bait</a>
+
+          <p class="lure-note">
+            Want a color that isn't listed? <a href="colors.html">See the full lineup</a>
+            or ask for a custom pour.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider divider-gold">
+
+  </main>
+
+  <footer>
+    <img src="assets/cheddarbaits.jpg" alt="CheddarBaits">
+    <p>&copy; <span id="year"></span> CheddarBaits. Custom Colors. Anytime.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="colors.js"></script>
+  <script src="lure.js"></script>
+  <script>initLurePage("senko");</script>
+</body>
+</html>

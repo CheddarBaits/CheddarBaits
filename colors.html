@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CheddarBaits color lineup — every soft plastic color available, plus custom color requests.">
   <title>Colors | CheddarBaits</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lure.css">
 </head>
-
 <body>
+
   <header class="site-header">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
         <img src="assets/cheddarbaits.jpg" alt="CheddarBaits logo">
       </a>
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
       <nav id="site-nav">
         <a href="index.html">Home</a>
         <a href="index.html#lures">Lures</a>
@@ -27,6 +27,7 @@
   </header>
 
   <main>
+
     <section class="section page-head">
       <p class="eyebrow">THE COLOR LINEUP</p>
       <h2>Colors</h2>
@@ -36,128 +37,8 @@
     <hr class="divider divider-gold">
 
     <section class="section dark-section">
-      <div class="color-grid">
-
-        <article class="color-card">
-          <div class="color-swatch" style="background: linear-gradient(150deg, #f2eee4, #d9d2c0);"></div>
-          <div class="color-card-info">
-            <h3>Monkey Milk</h3>
-            <p>Milky pearl white with a heavy iridescent flash. Shines hard in sun.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch" style="background: linear-gradient(150deg, #4a2d6b, #2a1540);"></div>
-          <div class="color-card-info">
-            <h3>Confetti Cake</h3>
-            <p>Opaque deep purple loaded with red, blue and purple flake.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch" style="background: linear-gradient(150deg, #2f6fa8, #14375c);"></div>
-          <div class="color-card-info">
-            <h3>Blue Confetti Cake</h3>
-            <p>The confetti cake mix in a semi-transparent deep blue.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 4</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 5</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 6</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 7</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 8</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 9</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 10</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 11</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 12</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 13</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 14</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-
-        <article class="color-card">
-          <div class="color-swatch color-swatch-empty">COMING SOON</div>
-          <div class="color-card-info">
-            <h3>Color 15</h3>
-            <p>Another one in the works.</p>
-          </div>
-        </article>
-      </div>
+      <!-- Cards are built from colors.js. Don't add them by hand here. -->
+      <div class="color-grid" id="color-grid"></div>
     </section>
 
     <hr class="divider divider-gold">
@@ -167,18 +48,21 @@
         <p class="eyebrow">DON'T SEE IT?</p>
         <h2>Custom Colors</h2>
         <p>Have a favorite color, a local forage pattern, or something completely ridiculous
-          you want to try? Send it over and we'll pour it.</p>
+           you want to try? Send it over and we'll pour it.</p>
       </div>
       <a class="button" href="mailto:cheddarbaits@gmail.com">Request a Custom Color</a>
     </section>
+
   </main>
 
   <footer>
     <img src="assets/cheddarbaits.jpg" alt="CheddarBaits">
-    <p>© <span id="year"></span> CheddarBaits. Custom Colors. Anytime.</p>
+    <p>&copy; <span id="year"></span> CheddarBaits. Custom Colors. Anytime.</p>
   </footer>
 
   <script src="script.js"></script>
+  <script src="colors.js"></script>
+  <script src="lure.js"></script>
+  <script>initColorsPage();</script>
 </body>
-
 </html>
