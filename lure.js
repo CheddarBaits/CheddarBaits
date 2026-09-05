@@ -133,3 +133,144 @@ function initColorsPage() {
     grid.appendChild(card);
   });
 }
+
+
+/* ------------------------------------------------------------
+   GALLERY PAGE
+   ------------------------------------------------------------ */
+
+function initGalleryPage() {
+  const grid = document.getElementById("gallery-grid");
+  if (!grid) return;
+
+  const photos = (typeof GALLERY_PHOTOS !== "undefined") ? GALLERY_PHOTOS : [];
+  const minTiles = (typeof GALLERY_MIN_TILES !== "undefined") ? GALLERY_MIN_TILES : 0;
+  const total = Math.max(photos.length, minTiles);
+
+  grid.innerHTML = "";
+
+  if (total === 0) {
+    grid.innerHTML = '<p class="gallery-empty">Photos going up soon.</p>';
+    return;
+  }
+
+  for (let i = 0; i < total; i++) {
+    const photo = photos[i];
+
+    if (!photo) {
+      const pending = document.createElement("div");
+      pending.className = "gallery-tile gallery-tile-pending";
+      pending.innerHTML = "<span>Coming soon</span>";
+      grid.appendChild(pending);
+      continue;
+    }
+
+    const tile = document.createElement("button");
+    tile.className = "gallery-tile";
+    tile.type = "button";
+    tile.setAttribute("aria-label", "Open photo: " + photo.caption);
+    tile.dataset.index = i;
+
+    const img = document.createElement("img");
+    img.src = photo.src;
+    img.alt = photo.caption;
+    img.loading = "lazy";
+    tile.appendChild(img);
+
+    tile.addEventListener("click", function () {
+      openLightbox(Number(this.dataset.index));
+    });
+
+    grid.appendChild(tile);
+  }
+
+  buildLightbox(photos);
+}
+
+
+/* ------------------------------------------------------------
+   Lightbox — click a photo to see it full size.
+   ------------------------------------------------------------ */
+
+let lightboxPhotos = [];
+let lightboxIndex = 0;
+let lightboxOpener = null;
+
+function buildLightbox(photos) {
+  lightboxPhotos = photos;
+
+  if (document.getElementById("lightbox")) return;
+
+  const box = document.createElement("div");
+  box.id = "lightbox";
+  box.className = "lightbox";
+  box.setAttribute("role", "dialog");
+  box.setAttribute("aria-modal", "true");
+  box.hidden = true;
+  box.innerHTML =
+    '<button class="lightbox-close" type="button" aria-label="Close">&times;</button>' +
+    '<button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous photo">&#8249;</button>' +
+    '<figure class="lightbox-figure">' +
+      '<img id="lightbox-img" alt="">' +
+      '<figcaption id="lightbox-caption"></figcaption>' +
+    '</figure>' +
+    '<button class="lightbox-nav lightbox-next" type="button" aria-label="Next photo">&#8250;</button>';
+
+  document.body.appendChild(box);
+
+  box.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
+  box.querySelector(".lightbox-prev").addEventListener("click", function () { stepLightbox(-1); });
+  box.querySelector(".lightbox-next").addEventListener("click", function () { stepLightbox(1); });
+
+  // Clicking the dark area closes it; clicking the photo doesn't.
+  box.addEventListener("click", function (e) {
+    if (e.target === box || e.target.classList.contains("lightbox-figure")) closeLightbox();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (box.hidden) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") stepLightbox(-1);
+    if (e.key === "ArrowRight") stepLightbox(1);
+  });
+}
+
+function openLightbox(index) {
+  const box = document.getElementById("lightbox");
+  if (!box) return;
+
+  lightboxOpener = document.activeElement;
+  lightboxIndex = index;
+  renderLightbox();
+
+  box.hidden = false;
+  document.body.classList.add("lightbox-open");
+  box.querySelector(".lightbox-close").focus();
+}
+
+function closeLightbox() {
+  const box = document.getElementById("lightbox");
+  if (!box) return;
+
+  box.hidden = true;
+  document.body.classList.remove("lightbox-open");
+  if (lightboxOpener) lightboxOpener.focus();
+}
+
+function stepLightbox(direction) {
+  if (lightboxPhotos.length === 0) return;
+  lightboxIndex = (lightboxIndex + direction + lightboxPhotos.length) % lightboxPhotos.length;
+  renderLightbox();
+}
+
+function renderLightbox() {
+  const photo = lightboxPhotos[lightboxIndex];
+  if (!photo) return;
+
+  const img = document.getElementById("lightbox-img");
+  const caption = document.getElementById("lightbox-caption");
+
+  img.src = photo.src;
+  img.alt = photo.caption;
+  caption.textContent = photo.caption;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Order CheddarBaits soft plastic lures. Add as many baits and colors as you want, then we'll follow up to confirm and arrange payment.">
+  <title>Order | CheddarBaits</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lure.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/cheddarbaits.jpg" alt="CheddarBaits logo">
+      </a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+      <nav id="site-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#lures">Lures</a>
+        <a href="colors.html">Colors</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="index.html#order">How to Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section page-head">
+      <p class="eyebrow">READY TO FISH?</p>
+      <h2>Place an Order</h2>
+      <p>Add as many baits and colors as you want. We'll email you back to confirm details and arrange payment (e-transfer).</p>
+    </section>
+
+    <hr class="divider divider-gold">
+
+    <section class="section dark-section">
+      <div class="order-wrap">
+
+        <!--
+          FORMSPREE SETUP:
+          Replace YOUR_FORM_ID below with the ID Formspree gives you
+          when you create a form at formspree.io. It's the part of
+          the URL after /f/  e.g. https://formspree.io/f/abc123
+                                                          ^^^^^^ this part
+        -->
+        <form id="order-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+          <!-- One .order-item per bait the customer wants. JS adds/removes these. -->
+          <div id="order-items"></div>
+
+          <button class="button button-secondary" type="button" id="add-item-btn">+ Add Another Bait</button>
+
+          <div class="order-field">
+            <label for="destination">Shipping to</label>
+            <select id="destination" name="Shipping destination" required>
+              <option value="Canada">Canada</option>
+              <option value="United States">United States</option>
+            </select>
+          </div>
+
+          <div class="order-total" id="order-total" aria-live="polite">
+            <span class="order-total-label">Total</span>
+            <span class="order-total-value" id="order-total-value">Choose a bait</span>
+          </div>
+
+          <p class="order-note order-note-shipping" id="us-shipping-note" hidden>
+            U.S. orders are welcome &mdash; cross-border shipping runs higher than
+            the flat Canadian rate shown above. We'll follow up with the exact
+            shipping cost before charging anything.
+          </p>
+
+          <div class="order-field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="Name" required>
+          </div>
+
+          <div class="order-field">
+            <label for="email">Your email</label>
+            <input type="email" id="email" name="_replyto" required>
+          </div>
+
+          <div class="order-field">
+            <label for="shipping">Shipping address <span>(or "pickup" if local)</span></label>
+            <textarea id="shipping" name="Shipping address" rows="3" required></textarea>
+          </div>
+
+          <div class="order-field">
+            <label for="notes">Anything else? <span>(optional)</span></label>
+            <textarea id="notes" name="Notes" rows="3"></textarea>
+          </div>
+
+          <!-- Sent along so the total the customer saw is on record, not just implied. -->
+          <input type="hidden" id="total-field" name="Total (customer-facing estimate)" value="">
+
+          <!-- Honeypot field to cut down on spam. Real people never fill this in. -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+          <input type="hidden" name="_subject" value="New CheddarBaits order">
+
+          <button class="button" type="submit">Send Order</button>
+
+          <p class="order-note">
+            We'll reply within a day or two to confirm your order and send e-transfer details.
+            Currently shipping within Canada only.
+          </p>
+
+        </form>
+
+        <div id="order-success" class="order-success" hidden>
+          <h3>Order sent!</h3>
+          <p>Check your email &mdash; we'll follow up shortly to confirm details and get you set up with payment.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider divider-gold">
+
+  </main>
+
+  <footer>
+    <img src="assets/cheddarbaits.jpg" alt="CheddarBaits">
+    <p>&copy; <span id="year"></span> CheddarBaits. Custom Colors. Anytime.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="colors.js"></script>
+  <script src="lure.js"></script>
+  <script src="order.js"></script>
+</body>
+</html>

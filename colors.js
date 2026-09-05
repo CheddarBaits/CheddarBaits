@@ -15,9 +15,13 @@
    ------------------------------------------------------------ */
 
 const CHEDDAR_BAITS = {
-  senko:      { name: '5" Senko',                 page: "senko.html"      },
-  paddletail: { name: '3.5" Paddletail Swimbait', page: "paddletail.html" }
+  senko:      { name: '5" Senko',                 page: "senko.html",      price: 5.99, packSize: 8 },
+  paddletail: { name: '3.5" Paddletail Swimbait', page: "paddletail.html", price: 5.99, packSize: 6 }
 };
+
+// Flat shipping added to every order, regardless of size or destination
+// within Canada. Change this one number if your actual cost shifts.
+const SHIPPING_FLAT_RATE = 6.00;
 
 
 /* ------------------------------------------------------------
