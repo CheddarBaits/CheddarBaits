@@ -607,6 +607,43 @@ body.lightbox-open {
   padding-left: 0.9rem;
 }
 
+/* ============================================================
+   PRODUCT CARD IMAGE FIX
+   ------------------------------------------------------------
+   CSS Grid items default to min-height: auto, which lets a
+   replaced element (an <img>) size itself by its own aspect
+   ratio instead of respecting .product-images' fixed 320px row
+   height. The oversized image then gets clipped by
+   overflow: hidden on the parent — which looks exactly like a
+   cropping bug, even though object-fit: contain (already set
+   correctly in style.css) is doing its job on the wrong-sized
+   box. min-height: 0 here is the actual fix.
+   ============================================================ */
+
+.product-images img {
+  min-height: 0;
+  min-width: 0;
+}
+
+/* ============================================================
+   HOMEPAGE GALLERY TEASER TILES
+   ------------------------------------------------------------
+   Not the full gallery.html grid, which has its own rules under
+   .gallery-page-grid. These are just the 4 teaser tiles on the
+   homepage.
+   ============================================================ */
+.gallery-grid .gallery-placeholder {
+  padding: 0;
+  overflow: hidden;
+}
+
+.gallery-grid .gallery-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .order-success {
   text-align: center;
   padding: 3rem 1rem;
