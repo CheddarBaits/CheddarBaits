@@ -12,11 +12,37 @@
    The key ("senko") is what gets used in the "baits" list on each
    color below. When you add a new bait to the lineup, add it here
    and make a page for it.
+
+   "image" and "blurb" are only used by lures.html (the "See All
+   Lures" grid). Set image to a real photo path once you have one —
+   until then it shows a "Coming Soon" placeholder like the homepage
+   cards do.
    ------------------------------------------------------------ */
 
 const CHEDDAR_BAITS = {
-  senko:      { name: '5" Senko',                 page: "senko.html",      price: 5.99, packSize: 8 },
-  paddletail: { name: '3.5" Paddletail Swimbait', page: "paddletail.html", price: 5.99, packSize: 6 }
+  senko:      { name: '5" Senko',                 page: "senko.html",      price: 5.99, packSize: 8,
+                image: "assets/cheddarbaits24.jpg",
+                blurb: "The classic Senko everyone loves — customizable colors." },
+
+  paddletail: { name: '3.5" Paddletail Swimbait', page: "paddletail.html", price: 5.99, packSize: 6,
+                image: "assets/cheddarbaits5.jpg",
+                blurb: "Paddletails that are guaranteed to drive the bass nuts." },
+
+  grub:       { name: '4" Grub',                  page: "grub.html",       price: null, packSize: null,
+                image: null,
+                blurb: "A classic curl-tail grub with heavy thump on the fall and the retrieve." },
+
+  senko4:     { name: '4" Senko',                 page: "senko4.html",     price: null, packSize: null,
+                image: null,
+                blurb: "A smaller version of our 5\" Senko, built for finesse presentations and lighter bites." },
+
+  minnow:     { name: '3" Minnow',                page: "minnow.html",     price: null, packSize: null,
+                image: null,
+                blurb: "A slim baitfish profile that shines on a jighead or as a swimbait trailer." },
+
+  creature:   { name: '4" Creature Bait',         page: "creature.html",   price: null, packSize: null,
+                image: null,
+                blurb: "A bulky, appendage-loaded creature bait built for flipping and pitching." }
 };
 
 // Flat shipping added to every order, regardless of size or destination
@@ -65,7 +91,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #f2eee4, #d9d2c0)",
     baits: {
       senko: "assets/cheddarbaits15.jpg",
-      paddletail: "assets/cheddarbaits9.jpg"
+      paddletail: "assets/cheddarbaits9.jpg",
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -76,7 +106,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #4a2d6b, #2a1540)",
     baits: {
       senko: "assets/cheddarbaits20.jpg",
-      paddletail: "assets/cheddarbaits14.jpg"
+      paddletail: "assets/cheddarbaits14.jpg",
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -87,7 +121,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #2f6fa8, #14375c)",
     baits: {
       senko: "assets/cheddarbaits18.jpg",
-      paddletail: null
+      paddletail: null,
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -98,7 +136,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #2f6fa8, #14375c)",
     baits: {
       senko: "assets/cheddarbaits3.jpg",
-      paddletail: "assets/cheddarbaits11.jpg"
+      paddletail: "assets/cheddarbaits11.jpg",
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -109,7 +151,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #f2a0c0, #d1668f)",
     baits: {
       senko: "assets/cheddarbaits16.jpg",
-      paddletail: "assets/cheddarbaits7.jpg"
+      paddletail: "assets/cheddarbaits7.jpg",
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -120,7 +166,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #c8e04a, #8fae1c)",
     baits: {
       senko: "assets/cheddarbaits21.jpg",
-      paddletail: null
+      paddletail: null,
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -131,7 +181,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #6d86a8, #38506e)",
     baits: {
       senko: null,
-      paddletail: null
+      paddletail: null,
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -142,7 +196,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #0d6301, #084100)",
     baits: {
       senko: "assets/cheddarbaits23.jpg",
-      paddletail: "assets/cheddarbaits13.jpg"
+      paddletail: "assets/cheddarbaits13.jpg",
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -153,7 +211,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #640468, #400242)",
     baits: {
       senko: "assets/cheddarbaits22.jpg",
-      paddletail: "assets/cheddarbaits6.jpg"
+      paddletail: "assets/cheddarbaits6.jpg",
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -164,7 +226,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #7a8a3c, #46521c)",
     baits: {
       senko: "assets/cheddarbaits17.jpg",
-      paddletail: "assets/cheddarbaits12.jpg"
+      paddletail: "assets/cheddarbaits12.jpg",
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -175,7 +241,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #05000a, #1707fd)",
     baits: {
       senko: null,
-      paddletail: "assets/cheddarbaits10.jpg"
+      paddletail: "assets/cheddarbaits10.jpg",
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -186,7 +256,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #260797, #2704ec)",
     baits: {
       senko: null,
-      paddletail: null
+      paddletail: null,
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   },
 
@@ -197,7 +271,11 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #6d86a8, #38506e)",
     baits: {
       senko: null,
-      paddletail: null
+      paddletail: null,
+      grub: null,
+      senko4: null,
+      minnow: null,
+      creature: null
     }
   }
 

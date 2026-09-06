@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Every CheddarBaits soft plastic lure in the lineup — pick a bait, then pick a color.">
+  <title>All Lures | CheddarBaits</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lure.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/cheddarbaits.jpg" alt="CheddarBaits logo">
+      </a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+      <nav id="site-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#lures">Lures</a>
+        <a href="colors.html">Colors</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#order">How to Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section page-head">
+      <p class="eyebrow">THE FULL LINEUP</p>
+      <h2>All Lures</h2>
+      <p>Every bait CheddarBaits pours, in one place. Pick a bait to see its colors and place an order.</p>
+    </section>
+
+    <hr class="divider divider-gold">
+
+    <section class="section dark-section">
+      <!-- Cards are built from colors.js (CHEDDAR_BAITS). Don't add them by hand here. -->
+      <div class="product-grid" id="lures-grid"></div>
+    </section>
+
+    <hr class="divider divider-gold">
+
+    <section class="section order-section">
+      <div>
+        <p class="eyebrow">DON'T SEE WHAT YOU WANT?</p>
+        <h2>Custom Colors</h2>
+        <p>Have a favorite color, a local forage pattern, or something completely ridiculous
+           you want to try? Send it over and we'll pour it.</p>
+      </div>
+      <a class="button" href="mailto:cheddarbaits@gmail.com">Request a Custom Color</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <img src="assets/cheddarbaits.jpg" alt="CheddarBaits">
+    <p>&copy; <span id="year"></span> CheddarBaits. Custom Colors. Anytime.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="colors.js"></script>
+  <script src="lure.js"></script>
+  <script>initLuresPage();</script>
+</body>
+</html>
