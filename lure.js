@@ -2,10 +2,12 @@
    CheddarBaits — page logic
    ------------------------------------------------------------
    You should not need to edit this file. It reads colors.js and
-   builds two things:
+   builds:
 
      initLurePage("senko")  — the dropdown + swapping image
      initColorsPage()       — the full color grid on colors.html
+     initLuresPage()        — the "All Lures" grid on lures.html
+     initStingersPage()     — the stinger-family grid on stingers.html
    ============================================================ */
 
 
@@ -90,10 +92,20 @@ function initColorsPage() {
     card.className = "color-card";
     card.id = color.id;
 
-    const swatch = document.createElement("div");
-    swatch.className = "color-swatch";
-    swatch.style.background = color.swatch;
-    card.appendChild(swatch);
+    if (color.image) {
+      const photo = document.createElement("div");
+      photo.className = "color-swatch color-swatch-photo";
+      const img = document.createElement("img");
+      img.src = color.image;
+      img.alt = "CheddarBaits " + color.name + " color";
+      photo.appendChild(img);
+      card.appendChild(photo);
+    } else {
+      const swatch = document.createElement("div");
+      swatch.className = "color-swatch";
+      swatch.style.background = color.swatch;
+      card.appendChild(swatch);
+    }
 
     const info = document.createElement("div");
     info.className = "color-card-info";
@@ -136,6 +148,98 @@ function initColorsPage() {
 
 
 /* ------------------------------------------------------------
+   ALL LURES PAGE + STINGERS & LAMINATES HUB PAGE
+
+   Both build product cards straight from CHEDDAR_BAITS, so a new
+   bait added to colors.js shows up here automatically — no HTML
+   to edit by hand.
+   ------------------------------------------------------------ */
+
+function buildBaitCard(bait) {
+  const card = document.createElement("article");
+  card.className = "product-card";
+
+  if (bait.image) {
+    const imgWrap = document.createElement("div");
+    imgWrap.className = "product-images";
+    const img = document.createElement("img");
+    img.src = bait.image;
+    img.alt = "CheddarBaits " + bait.name + " soft plastic lure";
+    imgWrap.appendChild(img);
+    card.appendChild(imgWrap);
+  } else {
+    const placeholder = document.createElement("div");
+    placeholder.className = "product-placeholder";
+    placeholder.innerHTML = "<strong>" + bait.name + "</strong><small>Photo coming soon</small>";
+    card.appendChild(placeholder);
+  }
+
+  const info = document.createElement("div");
+  info.className = "product-info";
+
+  const heading = document.createElement("h3");
+  heading.textContent = bait.name;
+  info.appendChild(heading);
+
+  const blurb = document.createElement("p");
+  blurb.textContent = bait.blurb;
+  info.appendChild(blurb);
+
+  const bottom = document.createElement("div");
+  bottom.className = "product-bottom";
+
+  const priceSpan = document.createElement("span");
+  if (bait.price) {
+    priceSpan.textContent = "$" + bait.price.toFixed(2) + " / " + bait.packSize + " Pack";
+  } else if (bait.priceVariesByColor) {
+    priceSpan.textContent = "Priced per color";
+  } else {
+    priceSpan.textContent = "Coming Soon";
+  }
+  bottom.appendChild(priceSpan);
+
+  // page: null means not orderable yet — no link, per colors.js's own rule.
+  if (bait.page) {
+    const link = document.createElement("a");
+    link.href = bait.page;
+    link.textContent = "See Colors";
+    bottom.appendChild(link);
+  }
+
+  info.appendChild(bottom);
+  card.appendChild(info);
+
+  return card;
+}
+
+function initLuresPage() {
+  const grid = document.getElementById("lures-grid");
+  if (!grid) return;
+  grid.innerHTML = "";
+
+  // Stinger-family baits have their own hub page (stingers.html),
+  // so they're left off the main lineup grid to avoid duplicates.
+  const stingerFamily = ["stinger", "stingergrub", "laminate"];
+
+  Object.keys(CHEDDAR_BAITS).forEach(function (key) {
+    if (stingerFamily.indexOf(key) !== -1) return;
+    grid.appendChild(buildBaitCard(CHEDDAR_BAITS[key]));
+  });
+}
+
+function initStingersPage() {
+  const grid = document.getElementById("stingers-grid");
+  if (!grid) return;
+  grid.innerHTML = "";
+
+  ["stinger", "stingergrub", "laminate"].forEach(function (key) {
+    const bait = CHEDDAR_BAITS[key];
+    if (bait) grid.appendChild(buildBaitCard(bait));
+  });
+}
+
+
+/* ------------------------------------------------------------
    GALLERY PAGE
    ------------------------------------------------------------ */
 
@@ -158,9 +262,11 @@ function initGalleryPage() {
     const photo = photos[i];
 
     if (!photo) {
-      const pending = document.createElement("div");
+      const pending = document.createElement("a");
       pending.className = "gallery-tile gallery-tile-pending";
-      pending.innerHTML = "<span>Coming soon</span>";
+      pending.href = "mailto:cheddarbaits@gmail.com?subject=Gallery%20photo";
+      pending.setAttribute("aria-label", "Submit a photo for the gallery");
+      pending.innerHTML = "<span>Submit a Photo</span>";
       grid.appendChild(pending);
       continue;
     }

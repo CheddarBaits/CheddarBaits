@@ -44,33 +44,33 @@ const CHEDDAR_BAITS = {
   // see priceVariesByColor above. packSize of 4 is a placeholder,
   // change it if your actual pack size is different.
 
-  stinger:     { name: "Stinger",      page: "stinger.html",     price: null, packSize: 4, priceVariesByColor: true,
-                 image: null,
-                 blurb: "Two-tone stick baits with a sharp color-shift stripe down the body." },
+  stinger:     { name: "Stinger",      page: "stinger.html",     price: 7.99, packSize: 8, priceVariesByColor: true,
+                 image: "assets/cheddarbaits28.jpg",
+                 blurb: "Two-tone stick baits with a focus point. Available in both 4\" and 5\"" },
 
-  stingergrub: { name: "Stinger Grub", page: "stingergrub.html", price: null, packSize: 4, priceVariesByColor: true,
-                 image: null,
-                 blurb: "A small non-tailed grub shaped like a pupa, poured half-and-half in two colors." },
+  stingergrub: { name: "Stinger Grub", page: "stingergrub.html", price: 7.99, packSize: 40, priceVariesByColor: true,
+                 image: "assets/cheddarbaits29.jpg",
+                 blurb: "A small 5/8\" non-tailed crappie jig grub, poured half-and-half in two colors." },
 
-  laminate:    { name: "Laminates",    page: null,               price: null, packSize: null,
+  laminate:    { name: "Laminates",    page: null,               price: 9.99, packSize: null, priceVariesByColor: true,
                  image: null,
                  blurb: "Multi-layered laminate colors — coming soon." },
 
-  grub:       { name: '4" Grub',                  page: "grub.html",       price: null, packSize: null,
-                image: null,
+  grub:       { name: '5/8" Grub',                  page: "grub.html",       price: 5.99, packSize: 40,
+                image: "assets/cheddarbaits38.jpg",
                 blurb: "A classic curl-tail grub with heavy thump on the fall and the retrieve." },
 
-  senko4:     { name: '4" Senko',                 page: "senko4.html",     price: null, packSize: null,
-                image: null,
+  senko4:     { name: '4" Senko',                 page: "senko4.html",     price: 5.99, packSize: 10,
+                image: "assets/cheddarbaits39.jpg",
                 blurb: "A smaller version of our 5\" Senko, built for finesse presentations and lighter bites." },
 
-  minnow:     { name: '3" Minnow',                page: "minnow.html",     price: null, packSize: null,
-                image: null,
+  minnow:     { name: '3" Minnow Paddletail',                page: "minnow.html",     price: 5.99, packSize: 8,
+                image: "assets/cheddarbaits34.jpg",
                 blurb: "A slim baitfish profile that shines on a jighead or as a swimbait trailer." },
 
-  creature:   { name: '4" Creature Bait',         page: "creature.html",   price: null, packSize: null,
-                image: null,
-                blurb: "A bulky, appendage-loaded creature bait built for flipping and pitching." }
+  creature:   { name: '4" Creature Bait',         page: "creature.html",   price: 6.99, packSize: 5,
+                image: "assets/cheddarbaits43.jpg",
+                blurb: "A ribbed creature bait built for high action and wobble." }
 };
 
 // Flat shipping added to every order, regardless of size or destination
@@ -126,6 +126,7 @@ const CHEDDAR_COLORS = [
     name: "Monkey Milk",
     blurb: "Milky pearl white with a heavy iridescent flash. Shines hard in sun.",
     swatch: "linear-gradient(150deg, #f2eee4, #d9d2c0)",
+    image: "assets/cheddarbaits9.jpg",
     baits: {
       senko: "assets/cheddarbaits15.jpg",
       paddletail: "assets/cheddarbaits9.jpg",
@@ -141,6 +142,7 @@ const CHEDDAR_COLORS = [
     name: "Confetti Cake",
     blurb: "Opaque deep purple loaded with red, blue and purple flake.",
     swatch: "linear-gradient(150deg, #4a2d6b, #2a1540)",
+    image: "assets/cheddarbaits20.jpg",
     baits: {
       senko: "assets/cheddarbaits20.jpg",
       paddletail: "assets/cheddarbaits14.jpg",
@@ -167,10 +169,11 @@ const CHEDDAR_COLORS = [
   },
 
   {
-    id: "sparkle-&-shine-(pearl-edition)",
-    name: "Sparkle & Shine (Pearl Edition)",
-    blurb: "Sparkle and shine, but with extra shine!",
+    id: "pearlescent-baby-blue",
+    name: "Pearlescent Baby Blue",
+    blurb: "Baby Blue with a subtle shimmer that is sure to catch the fish's eye!",
     swatch: "linear-gradient(150deg, #2f6fa8, #14375c)",
+    image: "assets/cheddarbaits11.jpg",
     baits: {
       senko: "assets/cheddarbaits3.jpg",
       paddletail: "assets/cheddarbaits11.jpg",
@@ -186,6 +189,7 @@ const CHEDDAR_COLORS = [
     name: "Bubblegum",
     blurb: "Soft opaque pink with black flake through it.",
     swatch: "linear-gradient(150deg, #f2a0c0, #d1668f)",
+    image: "assets/cheddarbaits7.jpg",
     baits: {
       senko: "assets/cheddarbaits16.jpg",
       paddletail: "assets/cheddarbaits7.jpg",
@@ -201,6 +205,7 @@ const CHEDDAR_COLORS = [
     name: "Chartreuse Pepper",
     blurb: "Bright chartreuse with fine black pepper flake.",
     swatch: "linear-gradient(150deg, #c8e04a, #8fae1c)",
+    image: "assets/cheddarbaits21.jpg",
     baits: {
       senko: "assets/cheddarbaits21.jpg",
       paddletail: null,
@@ -231,6 +236,7 @@ const CHEDDAR_COLORS = [
     name: "PumpkinGreen",
     blurb: "Natural green pumpkin body enhanced with black flake. The classic lure for bass fishermen",
     swatch: "linear-gradient(150deg, #0d6301, #084100)",
+    image: "assets/cheddarbaits23.jpg",
     baits: {
       senko: "assets/cheddarbaits23.jpg",
       paddletail: "assets/cheddarbaits13.jpg",
@@ -246,6 +252,7 @@ const CHEDDAR_COLORS = [
     name: "Junebug",
     blurb: "A flashy violet with strong green flake that works great in muddy waters, due to its ability to create really strong silhouettes.",
     swatch: "linear-gradient(150deg, #640468, #400242)",
+    image: "assets/cheddarbaits22.jpg",
     baits: {
       senko: "assets/cheddarbaits22.jpg",
       paddletail: "assets/cheddarbaits6.jpg",
@@ -276,39 +283,10 @@ const CHEDDAR_COLORS = [
     name: "Midnight Twinkle",
     blurb: "A flashy black with blue flake, works great in muddy waters for it's awesome silhouettes!",
     swatch: "linear-gradient(150deg, #05000a, #1707fd)",
+    image: "assets/cheddarbaits33.jpg",
     baits: {
       senko: null,
       paddletail: "assets/cheddarbaits10.jpg",
-      grub: null,
-      senko4: null,
-      minnow: null,
-      creature: null
-    }
-  },
-
-  {
-    id: "electric-junebug",
-    name: "Electric Junebug",
-    blurb: "A flashy blue-violet with strong green and blue flake that works great in muddy waters. Shiny! Coming Soon!",
-    swatch: "linear-gradient(150deg, #260797, #2704ec)",
-    baits: {
-      senko: null,
-      paddletail: null,
-      grub: null,
-      senko4: null,
-      minnow: null,
-      creature: null
-    }
-  },
-
-  {
-    id: "blue-smoke-pearl",
-    name: "Blue Smoke Pearl",
-    blurb: "Smoky blue pearl base with purple and blue flake. Coming Soon!",
-    swatch: "linear-gradient(150deg, #6d86a8, #38506e)",
-    baits: {
-      senko: null,
-      paddletail: null,
       grub: null,
       senko4: null,
       minnow: null,
@@ -321,13 +299,46 @@ const CHEDDAR_COLORS = [
     name: "Cheddar Gold Pearl",
     blurb: "Our signature Cheddar Gold Pearl recipe, made with ultra-fine mica powders for the ultimate golden sheen.",
     swatch: "linear-gradient(150deg, #ecd500, #e4e00a)",
+    image: "assets/cheddarbaits31.jpg",
     baits: {
       senko: null,
       paddletail: null,
-      grub: null,
+      grub: "assets/cheddarbaits37.jpg",
       senko4: null,
       minnow: null,
       creature: null
+    }
+  },
+
+  {
+    id: "smurf-blue",
+    name: "Smurf Blue",
+    blurb: "Our signature Cheddar Gold Pearl recipe, made with ultra-fine mica powders for the ultimate golden sheen.",
+    swatch: "linear-gradient(150deg, #ecd500, #e4e00a)",
+    image: "assets/cheddarbaits31.jpg",
+    baits: {
+      senko: null,
+      paddletail: null,
+      grub: "assets/cheddarbaits40.jpg",
+      senko4: null,
+      minnow: null,
+      creature: null
+    }
+  },
+
+  {
+    id: "dirty-grape-soda",
+    name: "Dirty Grape Soda",
+    blurb: "Our signature Smurf Blue recipe, made with ultra-fine mica powders for a shiny presentation.",
+    swatch: "linear-gradient(150deg, #ecd500, #e4e00a)",
+    image: "assets/cheddarbaits34.jpg",
+    baits: {
+      senko: "assets/cheddarbaits30.jpg",
+      paddletail: "assets/cheddarbaits32.jpg",
+      grub: "assets/cheddarbaits38.jpg",
+      senko4: null,
+      minnow: "assets/cheddarbaits34.jpg",
+      creature: "assets/cheddarbaits43.jpg"
     }
   },
 
@@ -347,10 +358,11 @@ const CHEDDAR_COLORS = [
     name: "Lemon Drop & Smurf Blue",
     blurb: "Our custom lemon drop recipe against a smurf blue — a sharp two-tone split that introduces both silhouette, and .",
     swatch: "linear-gradient(90deg, #cfe83a 50%, #1e9be0 50%)",
+    image: "assets/cheddarbaits45.jpg",
     price: 8.00,
     baits: {
-      stinger: null,
-      stingergrub: null
+      stinger: "assets/cheddarbaits45.jpg",
+      stingergrub: "assets/cheddarbaits29.jpg"
     }
   },
 
@@ -359,22 +371,24 @@ const CHEDDAR_COLORS = [
     name: "Lemon Drop & Confetti Cake",
     blurb: "Our custom lemon drop recipe split against the deep purple confetti cake flake mix. a shiny two tone, made for clear water.",
     swatch: "linear-gradient(90deg, #cfe83a 50%, #4a2d6b 50%)",
+    image: "assets/cheddarbaits47.jpg",
     price: 8.00,
     baits: {
-      stinger: null
+      stinger: "assets/cheddarbaits47.jpg",
     }
   },
 
   {
-    id: "lemon-drop-night-sky",
-    name: "Lemon Drop & Night Sky",
-    blurb: "Our custom lemon drop recipe split against a near-black midnight blue. a hybrid two tone, it's flash combined with it's silhouette makes it an ideal candidate for most water.",
-    swatch: "linear-gradient(90deg, #cfe83a 50%, #0b0e2a 50%)",
-    price: 8.00,
-    baits: {
-      stinger: null
-    }
-  },
+  id: "lemon-drop-night-sky",
+  name: "Lemon Drop & Night Sky",
+  blurb: "...",
+  swatch: "linear-gradient(150deg, #0b0e2a, #1e3a5f)",
+  image: "assets/cheddarbaits46.jpg",
+  price: 8.00,
+  baits: {
+    stinger: "assets/cheddarbaits46.jpg"
+  }
+ },
 
   {
     // Suggested name — swap this and the "name" line below if you'd
