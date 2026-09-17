@@ -2,12 +2,10 @@
    CheddarBaits — page logic
    ------------------------------------------------------------
    You should not need to edit this file. It reads colors.js and
-   builds four things:
+   builds two things:
 
      initLurePage("senko")  — the dropdown + swapping image
      initColorsPage()       — the full color grid on colors.html
-     initLuresPage()        — the full lure grid on lures.html
-     initGalleryPage()      — the photo grid on gallery.html
    ============================================================ */
 
 
@@ -138,74 +136,6 @@ function initColorsPage() {
 
 
 /* ------------------------------------------------------------
-   LURES PAGE ("See All Lures")
-   ------------------------------------------------------------
-   Builds one product card per entry in CHEDDAR_BAITS, same look
-   as the homepage's featured cards. Add a new bait to colors.js
-   and it shows up here automatically — nothing to edit on this
-   page itself.
-   ------------------------------------------------------------ */
-
-function initLuresPage() {
-  const grid = document.getElementById("lures-grid");
-  if (!grid) return;
-
-  grid.innerHTML = "";
-
-  Object.keys(CHEDDAR_BAITS).forEach(function (key) {
-    const bait = CHEDDAR_BAITS[key];
-
-    const card = document.createElement("article");
-    card.className = "product-card";
-
-    if (bait.image) {
-      const imagesDiv = document.createElement("div");
-      imagesDiv.className = "product-images";
-      const img = document.createElement("img");
-      img.src = bait.image;
-      img.alt = "CheddarBaits " + bait.name + " soft plastic lure";
-      imagesDiv.appendChild(img);
-      card.appendChild(imagesDiv);
-    } else {
-      const placeholder = document.createElement("div");
-      placeholder.className = "product-placeholder";
-      placeholder.innerHTML = '<span>\uD83C\uDFA3</span><strong>Coming Soon</strong>';
-      card.appendChild(placeholder);
-    }
-
-    const info = document.createElement("div");
-    info.className = "product-info";
-
-    const h3 = document.createElement("h3");
-    h3.textContent = bait.name;
-    info.appendChild(h3);
-
-    const p = document.createElement("p");
-    p.textContent = bait.blurb || "";
-    info.appendChild(p);
-
-    const bottom = document.createElement("div");
-    bottom.className = "product-bottom";
-
-    const priceSpan = document.createElement("span");
-    priceSpan.textContent = (bait.price != null && bait.packSize != null)
-      ? "$" + bait.price.toFixed(2) + " / " + bait.packSize + " Pack"
-      : "PRICE TBD";
-    bottom.appendChild(priceSpan);
-
-    const link = document.createElement("a");
-    link.href = bait.page;
-    link.textContent = "See Colors";
-    bottom.appendChild(link);
-
-    info.appendChild(bottom);
-    card.appendChild(info);
-    grid.appendChild(card);
-  });
-}
-
-
-/* ------------------------------------------------------------
    GALLERY PAGE
    ------------------------------------------------------------ */
 
@@ -241,11 +171,20 @@ function initGalleryPage() {
     tile.setAttribute("aria-label", "Open photo: " + photo.caption);
     tile.dataset.index = i;
 
+    const photoWrap = document.createElement("div");
+    photoWrap.className = "gallery-tile-photo";
+
     const img = document.createElement("img");
     img.src = photo.src;
     img.alt = photo.caption;
     img.loading = "lazy";
-    tile.appendChild(img);
+    photoWrap.appendChild(img);
+    tile.appendChild(photoWrap);
+
+    const caption = document.createElement("span");
+    caption.className = "gallery-caption";
+    caption.textContent = photo.caption;
+    tile.appendChild(caption);
 
     tile.addEventListener("click", function () {
       openLightbox(Number(this.dataset.index));

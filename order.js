@@ -4,10 +4,14 @@
    You should not need to edit this file. It:
      - lets the customer add/remove multiple bait+color+quantity
        lines in one order
-     - fills each line's color dropdown based on which bait it has
+     - fills each line's color dropdown based on which bait it has,
+       with each color's own price shown when it has one (Stingers,
+       Stinger Grubs)
      - pre-fills the first line's bait if the page was opened as
        order.html?bait=senko
-     - adds up every line, plus flat shipping, into one total
+     - adds up every line, plus flat shipping, into one total —
+       using the bait's flat price if it has one, or the selected
+       color's own price otherwise
      - submits the form to Formspree without leaving the page,
        and swaps in a "thanks" message on success
    ============================================================ */
@@ -32,6 +36,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let itemCount = 0;
 
+  // Some baits (Senko, Paddletail) have one flat price. Others
+  // (Stingers, Stinger Grubs) price per color instead — bait.price
+  // is null for those, so this looks up the selected color's own
+  // price. Returns null if there's genuinely no price yet either way.
+  function priceForSelection(bait, key, colorName) {
+    if (bait.price != null) return bait.price;
+
+    const color = CHEDDAR_COLORS.find(function (c) {
+      return c.name === colorName && c.baits && Object.prototype.hasOwnProperty.call(c.baits, key);
+    });
+
+    return (color && color.price != null) ? color.price : null;
+  }
+
   function populateColorsFor(colorSelect, baitKey) {
     colorSelect.innerHTML = "";
 
@@ -55,7 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
     colors.forEach(function (color) {
       const opt = document.createElement("option");
       opt.value = color.name;
-      opt.textContent = color.name;
+      // Shows " — $8.00" after the name for colors with their own
+      // price (Stingers, Stinger Grubs). Colors with no "price" field
+      // render exactly as before — just the name.
+      opt.textContent = color.name + (color.price != null ? " — $" + color.price.toFixed(2) : "");
       colorSelect.appendChild(opt);
     });
 
@@ -113,10 +134,15 @@ document.addEventListener("DOMContentLoaded", function () {
     baitSelect.appendChild(placeholderOpt);
 
     Object.keys(CHEDDAR_BAITS).forEach(function (key) {
+      const bait = CHEDDAR_BAITS[key];
+      // Skip baits with no page yet (e.g. Laminates) — nothing to
+      // order until there's a real color list for them.
+      if (!bait.page) return;
+
       const opt = document.createElement("option");
-      opt.value = CHEDDAR_BAITS[key].name;
+      opt.value = bait.name;
       opt.dataset.key = key;
-      opt.textContent = CHEDDAR_BAITS[key].name;
+      opt.textContent = bait.name;
       baitSelect.appendChild(opt);
     });
 
@@ -201,6 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     Array.prototype.forEach.call(itemsContainer.children, function (row) {
       const baitSelect = row.querySelector(".item-bait");
+      const colorSelect = row.querySelector(".item-color");
       const quantityInput = row.querySelector(".item-quantity");
       const key = BAIT_KEY_BY_LABEL[baitSelect.value];
       const bait = key && CHEDDAR_BAITS[key];
@@ -209,14 +236,15 @@ document.addEventListener("DOMContentLoaded", function () {
       anyChosen = true;
 
       const qty = Math.max(1, parseInt(quantityInput.value, 10) || 1);
+      const price = priceForSelection(bait, key, colorSelect ? colorSelect.value : "");
 
-      if (bait.price == null) {
+      if (price == null) {
         anyTBD = true;
         lineParts.push(qty + " pack" + (qty > 1 ? "s" : "") + " of " + bait.name + " (TBD)");
         return;
       }
 
-      const lineTotal = bait.price * qty;
+      const lineTotal = price * qty;
       itemsTotal += lineTotal;
       lineParts.push(qty + " pack" + (qty > 1 ? "s" : "") + " of " + bait.name + " ($" + lineTotal.toFixed(2) + ")");
     });
