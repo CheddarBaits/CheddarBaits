@@ -34,7 +34,7 @@ const CHEDDAR_BAITS = {
                 image: "assets/cheddarbaits24.jpg",
                 blurb: "The classic Senko everyone loves — customizable colors." },
 
-  paddletail: { name: '3.5" Paddletail Swimbait', page: "paddletail.html", price: 5.99, packSize: 6,
+  paddletail: { name: '3.5" Ripper Paddletail', page: "paddletail.html", price: 5.99, packSize: 6,
                 image: "assets/cheddarbaits5.jpg",
                 blurb: "Paddletails that are guaranteed to drive the bass nuts." },
 
@@ -301,7 +301,7 @@ const CHEDDAR_COLORS = [
     swatch: "linear-gradient(150deg, #ecd500, #e4e00a)",
     image: "assets/cheddarbaits31.jpg",
     baits: {
-      senko: null,
+      senko: "assets/cheddarbaits31.jpg",
       paddletail: null,
       grub: "assets/cheddarbaits37.jpg",
       senko4: null,
@@ -315,7 +315,7 @@ const CHEDDAR_COLORS = [
     name: "Smurf Blue",
     blurb: "Our signature Cheddar Gold Pearl recipe, made with ultra-fine mica powders for the ultimate golden sheen.",
     swatch: "linear-gradient(150deg, #ecd500, #e4e00a)",
-    image: "assets/cheddarbaits31.jpg",
+    image: "assets/cheddarbaits34.jpg",
     baits: {
       senko: null,
       paddletail: null,
@@ -331,7 +331,7 @@ const CHEDDAR_COLORS = [
     name: "Dirty Grape Soda",
     blurb: "Our signature Smurf Blue recipe, made with ultra-fine mica powders for a shiny presentation.",
     swatch: "linear-gradient(150deg, #ecd500, #e4e00a)",
-    image: "assets/cheddarbaits34.jpg",
+    image: "assets/cheddarbaits40.jpg",
     baits: {
       senko: "assets/cheddarbaits30.jpg",
       paddletail: "assets/cheddarbaits32.jpg",
