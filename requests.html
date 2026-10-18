@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Request a custom CheddarBaits color. Each month we pick one request to pour.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Color Requests | CheddarBaits">
+  <meta property="og:description" content="Request a custom CheddarBaits color. Each month we pick one request to pour.">
+  <meta property="og:image" content="https://cheddarbaits.com/assets/cheddarbaitsbanner.jpg">
+  <meta property="og:url" content="https://cheddarbaits.com/requests.html">
+  <title>Color Requests | CheddarBaits</title>
+  <link rel="icon" type="image/png" href="assets/cheddarbaits-circle.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lure.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/cheddarbaits.jpg" alt="CheddarBaits logo">
+      </a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+      <nav id="site-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#lures">Lures</a>
+        <a href="colors.html">Colors</a>
+        <a href="guides.html">Guides</a>
+        <a href="requests.html">Requests</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#order">How to Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section page-head">
+      <p class="eyebrow">YOUR IDEA. OUR PLASTIC.</p>
+      <h2>Color Requests</h2>
+      <p>Got a color in your head? Send it in. Every month is a new round: requests stay open all month, then we pick one to pour.</p>
+    </section>
+
+    <hr class="divider divider-gold">
+
+    <section class="section dark-section">
+      <div class="order-wrap">
+
+        <div class="request-round">
+          <p class="eyebrow">THIS MONTH'S ROUND</p>
+          <h3 id="round-name"></h3>
+          <p id="round-closes"></p>
+        </div>
+
+        <!--
+          The form goes to the same Formspree inbox as the order form.
+          To send requests to their own inbox (and keep them from sharing
+          the order form's monthly limit), create a second form on
+          formspree.io and replace the ID in the action below.
+        -->
+        <form id="request-form" action="https://formspree.io/f/xyeypvjl" method="POST">
+
+          <div class="order-field">
+            <label for="request-name">Color name <span>(what would you call it?)</span></label>
+            <input type="text" id="request-name" name="Color name" required>
+          </div>
+
+          <div class="order-field">
+            <label for="request-desc">Describe it</label>
+            <textarea id="request-desc" name="Description" rows="4" required
+              placeholder="Base color, flake or glitter, pearl or solid, see-through or opaque, and what water or fish you picture it for."></textarea>
+          </div>
+
+          <div class="order-field">
+            <label for="request-swatch">Closest shade <span>(optional)</span></label>
+            <div class="request-swatch-row">
+              <input type="color" id="request-swatch" name="Closest shade" value="#f5c400">
+              <span id="request-swatch-text">#f5c400</span>
+            </div>
+          </div>
+
+          <div class="order-field">
+            <label>Which baits? <span>(optional)</span></label>
+            <div class="request-baits" id="bait-options"></div>
+          </div>
+
+          <div class="order-field">
+            <label for="request-who">Your name</label>
+            <input type="text" id="request-who" name="Name" required>
+          </div>
+
+          <div class="order-field">
+            <label for="request-email">Your email</label>
+            <input type="email" id="request-email" name="_replyto" required>
+          </div>
+
+          <input type="hidden" id="round-field" name="Request round" value="">
+          <input type="hidden" id="subject-field" name="_subject" value="CheddarBaits color request">
+
+          <!-- Honeypot field to cut down on spam. Real people never fill this in. -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+          <button class="button" type="submit">Send Request</button>
+
+          <p class="order-note">
+            We read every request. Sending one doesn't guarantee it gets poured, but we'll reply if yours is picked.
+          </p>
+        </form>
+
+        <div id="request-success" class="order-success" hidden>
+          <h3>Request sent!</h3>
+          <p>Thanks &mdash; it's in this month's round. Check back here at the end of the month to see what got picked.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider divider-gold">
+
+    <section class="section dark-section request-board">
+      <div id="shortlist-wrap">
+        <div class="section-heading">
+          <p class="eyebrow">THIS ROUND</p>
+          <h2>On the Shortlist</h2>
+        </div>
+        <div class="request-grid" id="shortlist-grid"></div>
+      </div>
+
+      <div class="section-heading">
+        <p class="eyebrow">PAST ROUNDS</p>
+        <h2>Colors You Picked</h2>
+      </div>
+      <div class="request-grid" id="past-grid"></div>
+    </section>
+
+    <hr class="divider divider-gold">
+
+  </main>
+
+  <footer>
+    <img src="assets/cheddarbaits.jpg" alt="CheddarBaits">
+    <p>&copy; <span id="year"></span> CheddarBaits. Custom Colors. Anytime.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="colors.js"></script>
+  <script src="requests.js"></script>
+</body>
+</html>

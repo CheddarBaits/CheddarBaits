@@ -73,9 +73,19 @@ const CHEDDAR_BAITS = {
                 blurb: "A ribbed creature bait built for high action and wobble." }
 };
 
-// Flat shipping added to every order, regardless of size or destination
-// within Canada. Change this one number if your actual cost shifts.
-const SHIPPING_FLAT_RATE = 6.00;
+// Flat shipping (CAD) added to every Canadian order, regardless of size.
+// Change this one number if your actual cost shifts — the homepage
+// banner, the order form, and the emailed total all read from it.
+// (U.S. orders are quoted separately and don't use this number.)
+const SHIPPING_FLAT_RATE = 21.49;
+
+// Canadian orders whose bait total (before shipping) reaches this amount
+// ship free. Set to null to turn free shipping off entirely — the banner
+// text, the order form, and the progress bar all hide themselves.
+// Rule of thumb: threshold = shipping cost / your profit margin per dollar.
+// E.g. $21.49 shipping at a 40% margin breaks even at about $54, so $100
+// leaves room to spare at that margin.
+const FREE_SHIPPING_THRESHOLD = 100.00;
 
 
 /* ------------------------------------------------------------
@@ -88,11 +98,17 @@ const SHIPPING_FLAT_RATE = 6.00;
        name:   "Monkey Milk",        // what customers see
        blurb:  "Short description.", // one or two sentences
        swatch: "linear-gradient(150deg, #f2eee4, #d9d2c0)",
-       price:  8.00,                 // OPTIONAL. Only needed for baits
+       price:  7.99,                 // OPTIONAL. Only needed for baits
                                       // marked priceVariesByColor above.
                                       // Omit it entirely for baits that
                                       // already have a flat price (Senko,
                                       // Paddletail) — it's ignored there.
+       soldOut: true,                // OPTIONAL. Add this line when you run out
+                                      // of the color. It disappears from the
+                                      // order form, the bait pages, the colors
+                                      // page and the color finder. Delete the
+                                      // line (or set it to false) when it's
+                                      // back in stock.
        baits:  {
          senko:      "assets/senko-monkey-milk.jpg",
          paddletail: null
@@ -234,7 +250,7 @@ const CHEDDAR_COLORS = [
   {
     id: "pumpkingreen",
     name: "PumpkinGreen",
-    blurb: "Natural green pumpkin body enhanced with black flake. The classic lure for bass fishermen",
+    blurb: "Natural green pumpkin body enhanced with black flake. The classic colour for bass fishermen",
     swatch: "linear-gradient(150deg, #0d6301, #084100)",
     image: "assets/cheddarbaits23.jpg",
     baits: {
@@ -250,7 +266,7 @@ const CHEDDAR_COLORS = [
   {
     id: "junebug",
     name: "Junebug",
-    blurb: "A flashy violet with strong green flake that works great in muddy waters, due to its ability to create really strong silhouettes.",
+    blurb: "A flashy violet with strong green flake that works great in muddy waters.",
     swatch: "linear-gradient(150deg, #640468, #400242)",
     image: "assets/cheddarbaits22.jpg",
     baits: {
@@ -313,7 +329,7 @@ const CHEDDAR_COLORS = [
   {
     id: "smurf-blue",
     name: "Smurf Blue",
-    blurb: "Our signature Cheddar Gold Pearl recipe, made with ultra-fine mica powders for the ultimate golden sheen.",
+    blurb: "Our signature Smurf Blue recipe, made with ultra-fine mica powders for a shiny presentation.",
     swatch: "linear-gradient(150deg, #ecd500, #e4e00a)",
     image: "assets/cheddarbaits34.jpg",
     baits: {
@@ -329,7 +345,7 @@ const CHEDDAR_COLORS = [
   {
     id: "dirty-grape-soda",
     name: "Dirty Grape Soda",
-    blurb: "Our signature Smurf Blue recipe, made with ultra-fine mica powders for a shiny presentation.",
+    blurb: "A Brown-Purple color shift. Great for casting silhouettes, or in bright conditions.",
     swatch: "linear-gradient(150deg, #ecd500, #e4e00a)",
     image: "assets/cheddarbaits40.jpg",
     baits: {
@@ -359,7 +375,7 @@ const CHEDDAR_COLORS = [
     blurb: "Our custom lemon drop recipe against a smurf blue — a sharp two-tone split that introduces both silhouette, and .",
     swatch: "linear-gradient(90deg, #cfe83a 50%, #1e9be0 50%)",
     image: "assets/cheddarbaits45.jpg",
-    price: 8.00,
+    price: 7.99,
     baits: {
       stinger: "assets/cheddarbaits45.jpg",
       stingergrub: "assets/cheddarbaits29.jpg"
@@ -372,7 +388,7 @@ const CHEDDAR_COLORS = [
     blurb: "Our custom lemon drop recipe split against the deep purple confetti cake flake mix. a shiny two tone, made for clear water.",
     swatch: "linear-gradient(90deg, #cfe83a 50%, #4a2d6b 50%)",
     image: "assets/cheddarbaits47.jpg",
-    price: 8.00,
+    price: 7.99,
     baits: {
       stinger: "assets/cheddarbaits47.jpg",
     }
@@ -381,10 +397,10 @@ const CHEDDAR_COLORS = [
   {
   id: "lemon-drop-night-sky",
   name: "Lemon Drop & Night Sky",
-  blurb: "...",
+  blurb: "Our custom lemon drop recipe split against our midnight twinkle. Great for silhouettes in versatile water conditions.",
   swatch: "linear-gradient(150deg, #0b0e2a, #1e3a5f)",
   image: "assets/cheddarbaits46.jpg",
-  price: 8.00,
+  price: 7.99,
   baits: {
     stinger: "assets/cheddarbaits46.jpg"
   }
@@ -398,10 +414,19 @@ const CHEDDAR_COLORS = [
     name: "Dirty Grape Soda & Lemon Drop",
     blurb: "A brown-purple color shift split against Our custom lemon drop recipe. a sharp two-tone split for strong silhouettes in stained water",
     swatch: "linear-gradient(150deg, #6b4423, #4a2d6b)",
-    price: 8.00,
+    price: 7.99,
     baits: {
       stinger: null
     }
   }
 
 ];
+
+
+/* ------------------------------------------------------------
+   Colors that are in stock. Every page uses THIS list for what
+   customers can see and pick, so a color marked soldOut: true
+   above disappears everywhere at once. Don't edit this part.
+   ------------------------------------------------------------ */
+
+const AVAILABLE_COLORS = CHEDDAR_COLORS.filter(function (c) { return !c.soldOut; });

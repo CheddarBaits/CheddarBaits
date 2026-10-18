@@ -24,7 +24,7 @@ function initLurePage(baitKey) {
   if (!select || !viewer) return;
 
   // Only the colors offered in this bait.
-  const colors = CHEDDAR_COLORS.filter(function (c) {
+  const colors = AVAILABLE_COLORS.filter(function (c) {
     return c.baits && Object.prototype.hasOwnProperty.call(c.baits, baitKey);
   });
 
@@ -87,7 +87,7 @@ function initColorsPage() {
 
   grid.innerHTML = "";
 
-  CHEDDAR_COLORS.forEach(function (color) {
+  AVAILABLE_COLORS.forEach(function (color) {
     const card = document.createElement("article");
     card.className = "color-card";
     card.id = color.id;

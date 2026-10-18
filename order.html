@@ -26,6 +26,8 @@
         <a href="index.html">Home</a>
         <a href="index.html#lures">Lures</a>
         <a href="colors.html">Colors</a>
+        <a href="guides.html">Guides</a>
+        <a href="requests.html">Requests</a>
         <a href="gallery.html">Gallery</a>
         <a href="index.html#order">How to Order</a>
       </nav>
@@ -57,7 +59,40 @@
           <!-- One .order-item per bait the customer wants. JS adds/removes these. -->
           <div id="order-items"></div>
 
-          <button class="button button-secondary" type="button" id="add-item-btn">+ Add Another Bait</button>
+          <div class="order-add-row">
+            <button class="button button-secondary" type="button" id="add-item-btn">+ Add Another Bait</button>
+            <button class="button button-secondary" type="button" id="kit-btn">Build a Kit</button>
+          </div>
+
+          <!--
+            Kit builder: pick one bait, set packs for as many colors as you
+            like, and it fills in your order lines for you. Nothing in here
+            has a name="" on purpose, so it isn't sent with the form; only
+            the order lines it creates are.
+          -->
+          <div class="kit-panel" id="kit-panel" hidden>
+            <h3>Build a Kit</h3>
+            <p class="order-note">Pick a bait, then choose how many packs of each color you want. Add it and it goes straight into your order.</p>
+
+            <div class="order-field">
+              <label for="kit-bait">Which bait?</label>
+              <select id="kit-bait"></select>
+            </div>
+
+            <div class="kit-colors" id="kit-colors"></div>
+
+            <div class="kit-actions">
+              <button class="button button-secondary" type="button" id="kit-one-each" hidden>1 pack of each</button>
+              <button class="button button-secondary" type="button" id="kit-clear" hidden>Clear</button>
+            </div>
+
+            <p class="kit-summary" id="kit-summary" aria-live="polite"></p>
+
+            <div class="kit-actions">
+              <button class="button" type="button" id="kit-add" disabled>Add Kit to Order</button>
+              <button class="button button-secondary" type="button" id="kit-cancel">Cancel</button>
+            </div>
+          </div>
 
           <div class="order-field">
             <label for="destination">Shipping to</label>
@@ -68,15 +103,35 @@
           </div>
 
           <div class="order-total" id="order-total" aria-live="polite">
+            <div class="order-breakdown" id="order-breakdown" hidden></div>
             <span class="order-total-label">Total</span>
             <span class="order-total-value" id="order-total-value">Choose a bait</span>
           </div>
+
+          <div class="ship-progress" id="ship-progress" hidden>
+            <p class="ship-progress-text" id="ship-progress-text"></p>
+            <div class="ship-progress-bar"><div class="ship-progress-fill" id="ship-progress-fill"></div></div>
+          </div>
+
+          <p class="order-note order-note-shipping" id="ca-shipping-note">
+            Canadian orders ship for a flat <span data-shipping-rate>$21.49</span> CAD per order, no matter
+            how many baits you add.<span data-free-shipping> Orders over <span data-free-threshold>$100</span> ship free.</span>
+            Shipping is already included in the total above.
+          </p>
 
           <p class="order-note order-note-shipping" id="us-shipping-note" hidden>
             U.S. orders are welcome &mdash; cross-border shipping runs higher than
             the flat Canadian rate shown above. We'll follow up with the exact
             shipping cost before charging anything.
           </p>
+
+          <div class="order-field order-mystery-ack" id="mystery-ack-wrap" hidden>
+            <label class="order-check">
+              <input type="checkbox" id="mystery-ack" name="Mystery Mix acknowledged" value="Yes">
+              <span>I understand Mystery Mix colors are random, come from what's currently in stock,
+              and can't be chosen or swapped.</span>
+            </label>
+          </div>
 
           <div class="order-field">
             <label for="name">Your name</label>
@@ -110,7 +165,8 @@
 
           <p class="order-note">
             We'll reply within a day or two to confirm your order and send e-transfer details.
-            Currently shipping within Canada only.
+            We ship across Canada and the U.S. Canadian orders ship at the flat rate above. For U.S. orders,
+            we'll confirm the exact shipping cost with you first and only charge it at the end.
           </p>
 
         </form>
