@@ -142,7 +142,7 @@ const CHEDDAR_COLORS = [
     name: "Monkey Milk",
     blurb: "Milky pearl white with a heavy iridescent flash. Shines hard in sun.",
     swatch: "linear-gradient(150deg, #f2eee4, #d9d2c0)",
-    image: "assets/cheddarbaits9.jpg",
+    image: "assets/cheddarbaits48.png",
     baits: {
       senko: "assets/cheddarbaits15.jpg",
       paddletail: "assets/cheddarbaits9.jpg",
@@ -233,9 +233,9 @@ const CHEDDAR_COLORS = [
   },
 
   {
-    id: "blue-smoke-pearl",
-    name: "Blue Smoke Pearl",
-    blurb: "Smoky blue pearl base with purple and blue flake. Coming Soon!",
+    id: "blue-smoke",
+    name: "Blue Smoke",
+    blurb: "Smoky blue base with purple and blue flake. Photo coming soon!",
     swatch: "linear-gradient(150deg, #6d86a8, #38506e)",
     baits: {
       senko: null,
@@ -284,6 +284,7 @@ const CHEDDAR_COLORS = [
     name: "Watermelon Red",
     blurb: "Natural green pumpkin body lifted with chartreuse and red flake. Quiet, confident, a timeless classic.",
     swatch: "linear-gradient(150deg, #7a8a3c, #46521c)",
+    image: "assets/cheddarbaits12.jpg",
     baits: {
       senko: "assets/cheddarbaits17.jpg",
       paddletail: "assets/cheddarbaits12.jpg",
